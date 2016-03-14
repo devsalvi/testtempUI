@@ -1,0 +1,54 @@
+<!-- start: PAGE TITLE -->
+<section id="page-title">
+	<div class="row">
+		<div class="col-sm-8">
+			<h1 class="mainTitle" translate="sidebar.nav.dashboard.DB">Manage Database</h1>
+			<span class="mainDescription">Perfom DB operations using the option below.
+		</div>
+		<div ncy-breadcrumb></div>
+	</div>
+</section>
+<!-- end: PAGE TITLE -->
+<!-- start: TABS -->
+<div class="container-fluid container-fullw bg-white" ng-controller="dbCtrl">
+		<div class="row">
+			<div class="col-md-12">
+				<h5 class="over-title margin-bottom-15">Select a DB operation <span class="text-bold"></span></h5>
+				<p>
+					
+				</p>
+				<uib-tabset class="tabbable">
+					<uib-tab heading="Create new collection">
+						<h4>Collection details</h4>
+						<p>
+							<input ng-model="collection.name" name="collectionName" ng-trim="true">
+						</p>
+						<p>Create data types
+							<fieldset  data-ng-repeat="choice in choices">
+                                <input type="text" ng-model="choice.name" name="" placeholder="data name">
+                                <input type="text" ng-model="choice.value" name="" placeholder="data value">
+                                <button class="remove" ng-show="$last" ng-click="removeChoice()">-</button>
+                            </fieldset>
+                            <pre>{{choices|json}}</pre>
+                            <button class="addfields" ng-click="addNewChoice()">Add fields</button>
+						</p>
+                        <p>
+                            <div id="choicesDisplay">
+                                {{ choices }}
+                            </div>
+                        </p>
+					</uib-tab>
+					<uib-tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active" disabled="tab.disabled">
+						{{tab.content}}
+					</uib-tab>
+					<uib-tab select="alertMe()">
+						<uib-tab-heading>
+							<i class="glyphicon glyphicon-bell"></i> Alert!
+						</uib-tab-heading>
+						I've got an HTML heading, and a select callback. Pretty cool!
+					</uib-tab>
+				</uib-tabset>
+			</div>
+		</div>
+	</div>
+
